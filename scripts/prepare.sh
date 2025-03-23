@@ -27,6 +27,6 @@ CREATE TABLE IF NOT EXISTS prices (
     id SERIAL PRIMARY KEY,
     name TEXT,
     category TEXT,
-    price TEXT,
+    price DECIMAL(12,2),
     create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );"

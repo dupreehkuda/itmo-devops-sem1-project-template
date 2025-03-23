@@ -63,7 +63,7 @@ func writeDataToCSV(csvFile *os.File) error {
 			id         int
 			name       string
 			category   string
-			price      string
+			price      float64
 			createDate string
 		)
 
@@ -71,7 +71,9 @@ func writeDataToCSV(csvFile *os.File) error {
 			return errors.New("failed to scan row")
 		}
 
-		record := []string{strconv.Itoa(id), name, category, price, createDate}
+		formatedPrice := strconv.FormatFloat(price, 'f', 2, 64)
+
+		record := []string{strconv.Itoa(id), name, category, formatedPrice, createDate}
 		if err := writer.Write(record); err != nil {
 			return errors.New("failed to write data to csv")
 		}
